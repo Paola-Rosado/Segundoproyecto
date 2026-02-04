@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 <!--En la linea anterior hago la referencia a la plantilla -->
 <!--Si el contenido abarca mas de una linea se puede utilizar la siguiente estructura, caso  contrario se puede utilizar la misma directiva de section pasando como segundo parametro el
 nombre del titulo-->
