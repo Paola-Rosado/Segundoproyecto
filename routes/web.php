@@ -17,3 +17,22 @@ Route::get('/principalpagina',[PostController::class,'principal']);
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello/{d}', function ($d=null){
+   return "Hello, Word! {$d}"; 
+})-> where ('d','[0-9]+');
+
+Route::get('/hello/{x}', function ($x=null){
+   return "Hello, Word! {$x}"; 
+})-> where ('x','\w+');
+
+Route::get('/Principal', function (){
+   return "Bienvenido a la pàgina principal"; 
+});
+
+Route::get('/about/{param?}', function ($p=null){
+    if (($p == null) || (empty($p))) {
+   return "No se ingreso ningùn parametro"; 
+}
+return"El paràmetro ingresado es:{$p}";
+});
