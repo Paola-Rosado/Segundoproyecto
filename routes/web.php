@@ -46,7 +46,8 @@ Route::get('/nuevoregistro', function (){
    $pagina ->save();
    return $pagina;
 });
-
+//Define el metodo para buscar por el id
+//Para obtener unicamente un registro
 Route::get('buscarpaginaid',function(){
    $post=Pagina::find(1);
    return $post;
