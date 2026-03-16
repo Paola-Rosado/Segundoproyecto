@@ -21,4 +21,13 @@ class HomeController extends Controller
         $datos["listadousuarios"]=$usuario->ObtenerListado();
         return view('principal',$datos);
     }
+    public function update(Request $request){
+        $usuarios=new Pagina();
+        $respuesta=$usuarios->BuscarId($request->id);
+        if(!empty($respuesta)){
+            $respuesta->name=$request->name;
+            $respuesta->save();
+        }
+        return $respuesta;
+    }
 }
