@@ -11,7 +11,7 @@ class HomeController extends Controller
         return view('hello');
     }
     public function empresa(){
-        $datos["nombre"]="Ruby Esmeralda Sosa Estrella";
+        $datos["nombre"]="Paola Pech Rosado";
         $datos["fecha"]="2026-12-15";
         $datos["actividad"]="Desarrollo de software";
         $datos["descripcion_about"]="Empresa dedicada al desarrollo de software a la medida de sus clientes";
@@ -26,6 +26,7 @@ class HomeController extends Controller
         $respuesta=$usuarios->BuscarId($request->id);
         if(!empty($respuesta)){
             $respuesta->name=$request->name;
+            $respuesta->calle=$request->calle;
             $respuesta->save();
         }
         return $respuesta;

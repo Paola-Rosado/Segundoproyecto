@@ -36,8 +36,8 @@ return"El paràmetro ingresado es:{$p}";
 Route::get('/empresa',[HomeController::class,'empresa'])->name('empresa');
 Route::get('/nuevoregistro', function (){
    $pagina=new Pagina;
-   $pagina->name ='Maria';
-   $pagina ->email='maria@gmail.com';
+   $pagina->name ='Luica Lopez';
+   $pagina ->email_verified='lucia@gmail.com';
    $pagina ->email_verified=date( 'Y-m-d');
    $pagina ->password='123456';
    $pagina ->avatar='user.png';
@@ -78,4 +78,35 @@ Route::get('filter',function(){
 Route::get('trescampos',function(){
    $post=Pagina::select('name','email','telefono')-> get();
    return $post;
+});
+
+//Conforme a una selección solamente traerme un cierto número de registros
+Route::get('filtroxnumreg',function(){
+   $post=Pagina::select("name","email")->orderBy("name")->take(3)->get();
+   return $post;
+});
+
+//Para eliminar un determinado registro
+Route::get('eliminar_registro',function(){
+   $post=Pagina::find(5);
+   $post->delete();
+   return "Eliminado";
+});
+
+//obtener la fecha conforme a un formato
+Route::get('Obtenerfechaformato',function(){
+   $post=Pagina::select("name","email","created_at")->find(3);
+   return $post;
+});
+
+//obtener el valor de is_active
+Route::get('Obtenerstatus',function(){
+   $post=Pagina::find(1);
+   //dd funciòn de depuracion que muestra el contenido de una variable
+   dd($post->is_active);
+});
+
+Route::put('/actualizar-dato/{id}',[HomeController::class,'update'])->name('dato.update');
+
+Route::get('prueba',function(){
 });
